@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport d'Analyse : Octolotl</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <div class="specimen-id">STATUS: ANALYSE COMPLÈTE</div>
+    <h1>PROJET_OCTOLOTL.exe</h1>
+    <p><i>Exploration de la morphologie 3D temps réel</i></p>
+</header>
+
+<div class="scanner-section">
+
+    <div class="annotation-group left-group">
+        <div class="annotation">
+            <b>01. SYSTÈME OSSEUX (RIG)</b>
+            Squelette dans les tentacules pour permettre des mouvements. 8 tentacules.
+        </div>
+        <div class="annotation">
+            <b>02. MAILLAGE (MESH)</b>
+            Un bloc pour la tête et les branchies, un autre pour le corps et les tentacules.
+        </div>
+    </div>
+
+    <div class="model-container">
+        <model-viewer
+                src="octolotl2.glb"
+                alt="Spécimen Octolotl"
+                camera-controls
+                shadow-intensity="1"
+        >
+        </model-viewer>
+    </div>
+
+    <div class="annotation-group right-group">
+        <div class="annotation">
+            <b>03. TEXTURES</b>
+            Effet humide via Roughness/Metalness. Effets de couleurs.
+        </div>
+        <div class="annotation">
+            <b>04. ANIMATION</b>
+            Tentacules d'un bloc pour une ondulation fluide et organique. Chacun ayant sa propre animation.
+        </div>
+    </div>
+</div>
+
+<div class="logbook">
+    <div class="logbook-title">DOSSIER TECHNIQUE & REX</div>
+    <p>Ce projet fil rouge s'inscrit dans l'UE GFX. Le but étant de gagner en compétences sur :
+        <br><i>
+            Élaborer un diagnostic avec une vision systémique sur le domaine de la 3D en identifiant et analysant les
+            principaux enjeux, verrous techniques et scientifiques afin d'aboutir à une modélisation correcte et
+            optimale.
+        </i><br><br>
+        Nous avons été amenés à voir les bases de la modélisation 3D : maillage, rig et animation.</p>
+
+    <div class="logbook-grid">
+        <div class="log-entry">
+            <h2>GENÈSE DE LA CREATURE</h2>
+            <p>Nous devions créer une pieuvre imaginaire. Le projet visait donc à fusionner deux espèces : l'axolotl
+                (pour sa tête et ses branchies) et la pieuvre (pour ses tentacules et sa structure de mouvement).
+                <br>Partant de <strong>zéro connaissance</strong>, le défi était d'apprendre Blender sur un projet
+                stimulant et laissant de la liberté grâce au côté imaginaire de la créature à créer.<br>
+                Avec l'aide de l'IA (Gemini), un modèle sous tous profils a été créé, à partir d'image d'inspiration.
+                Cette phase de conception a permis d'établir les proportions avant d'attaquer la modélisation, afin de
+                garantir une cohérence et avoir un rendu plus ou moins réaliste.
+            </p>
+            <div class="image-box">
+                <img src="concept.png" alt="Concept Original">
+                <div class="image">Ref: Concept Art Original</div>
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <h2>PROCÉDÉ TECHNIQUE</h2>
+            <div>Nous avons suivi un tuto de pieuvre sur Blender :
+                <a href="https://www.youtube.com/watch?v=kkc0_FMAapM" target="_blank" style="color: var(--gill-pink);">ce
+                    tuto de pieuvre mécanique</a>.
+                <br>Celui-ci nous a permis de suivre pas à pas la conception d'un modèle sur Blender. Nous nous sommes
+                également appuyé sur les cours et les recherches personnelles. Nous avons donc
+                procédé comme suit : <br>
+                <ul>
+                    <li>Création des bones (rigging) pour un tentacule et duplication x8.</li>
+                    <li>Modélisation des tentacules.</li>
+                    <li>Modélisation de la tête/du corps.</li>
+                    <li>UV mapping pour les textures</li>
+                    <li>Texturing (avec un effet humide (Roughness/Metalness))</li>
+                    <li>Animation du modèle</li>
+                    <li>Création d'une scène complète</li>
+
+                </ul>
+            </div>
+            <p>Les premières étapes :</p>
+            <div class="image-box">
+                <img src="bones.png" alt="Bones">
+                <div class="image">Ref: Bones de l'octolotl</div>
+            </div>
+            <div class="image-box">
+                <img src="modelisation.png" alt="Modelisation">
+                <div class="image">Ref: Modelisation de l'octolotl</div>
+            </div>
+            <div class="image-box">
+                <img src="wireframe.png" alt="Wireframe">
+                <div class="image">Ref: Wireframe de l'octolotl</div>
+            </div>
+            <h3>Choix technologiques</h3>
+            <h4>Blender</h4>
+            <p>Le but était d'avoir des notions sur blender, logiciel largement utilisé dans le domaine et gratuit. Il
+                est plutôt polyvalent (modélisation, rigging, animation, export, ...).</p>
+            <h4>Format .glb (glTF 2.0)</h4>
+            <p>Ce format a été privilégié lors des rendus car c'est un format standard, notamment pour le
+                web. Il permet <i>d'encapsuler</i> le maillage, les textures et les animations dans un fichier unique et
+                plutôt, notamment pour le temps réel.<br>
+                Il a été privilégié également pour la création de la scène sur ThreeJs Editor, car le format .fbx a posé
+                quelques soucis pour l'exportation du modèle en entier et des shaders.</p>
+        </div>
+
+        <div class="log-entry">
+            <h2>Animation</h2>
+            <div>
+                <p>
+                    Chaque tentacule est animée ainsi que la tête actuellement. Le mouvement se veut un minimum naturel,
+                    avec un mouvement de tête, s'écrasant ou s'étirant pour créer un effet de flottaison.
+                </p>
+                <div class="model-container">
+                    <model-viewer id="octo"
+                                  src="octolotl2.glb"
+                                  alt="Spécimen Octolotl"
+                                  camera-controls>
+                    </model-viewer>
+                </div>
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <h2>Scénographie</h2>
+            <p>
+                J'ai décidé de mettre mon octolotl dans un univers d'océan, c'est ce qui correspond le mieux à l'idée
+                que je me fais de cette créature. J'ai donc créé une scène avec une image equirectangulaire pour donner
+                un aspect immersif à la scène. Ainsi, l'utilisation d'une image HDRI permet de simuler un éclairage
+                complexe. Les reflets sur la texture "pearl-skin" réagissent de manière assez réaliste à son
+                environnement, simulant la lumière sous l'eau.
+                J'ai également ajouté une lumière pour éclairer ma créature.
+            </p>
+        </div>
+
+        <div class="log-entry">
+            <h2>PROBLÈMES RENCONTRES</h2>
+            <h4>Textures</h4>
+            <p>
+                La partie texture a été la première épreuve : seule la tête a été sélectionnée pour commencer la
+                texture, or les tentacules auraient été difficiles à intégrer sur l'UV map. Ainsi un autre "problème"
+                a été mis en avant : en ayant suivi le tuto fourni, les tentacules étaient articulés avec un effet
+                mécanique. Il a été choisi de repartir sur une autre base pour les tentacules : les faire en un seul
+                bloc chacun, affiné pour ressembler à de vrais tentacules. Et de refaire l'UV mapping pour les
+                textures.
+            </p>
+            <div class="image-box">
+                <img src="v1.png" alt="Wireframe">
+                <div class="image">Ref: Première version des tentacules</div>
+            </div>
+            <h4>Animation</h4>
+            <p>
+                L'animation a été mal réalisée, il y en a plusieurs, une animation pour chaque tentacule et une pour la
+                tête. Il aurait fallu faire une animation pour tout, en même temps, plutôt que les animer un par un.
+                Techniquement cela a créé des problèmes, des conflits lors de l'intégration web. Dans ce REX notamment,
+                car le "model-viewer" ne lit nativement qu'une seule piste. Pour résoudre ce problème, sans retourner
+                sur Blender, un script est nécessaire pour synchroniser les couches d'animation en parallèle.
+            </p>
+            <h4>Format</h4>
+            <p>
+                L'export du modèle de l'octolotl a été compliqué au début, car d'abord exporté de blender dans le format
+                .FBX, la tête n'apparaissait jamais et les shaders/textures non plus, sans que la raison ne soit
+                élucidée. Finalement, le format .glb a été privilégié pour l'export, et le problème a été résolu de
+                cette façon. Cependant, cela a pris un temps considérable pour la réalisation de la scène...
+            </p>
+        </div>
+
+        <div class="log-entry">
+            <h2>BILAN & APRÈS</h2>
+            <p>Ce projet a été formateur. J'ai pu apprendre des notions de blender, me rendre compte des compétences à
+                développer, à avoir pour faire de la modélisation, de l'animation. Même si savais que c'était un métier,
+                et même chaque partie (textures, animation…) peut être un métier à part entière, je peux mieux
+                visualiser ce que cela représente.<br>
+                C'est quelque chose qui m'intéresse beaucoup comme domaine.</p>
+            <h4>Si c'était à refaire ou à continuer...</h4>
+            <p>Pour cette créature, je ferais les branchies autrement, de manière plus précise et organique, à la place
+                d'extensions de la tête à la manière de cornes actuellement... Ce qui permettrait de les animer
+                également, en faisant donc un rigging de meilleure qualité.<br>
+                L'animation peut sans aucun doute être améliorée, un mouvement encore plus naturel et fluide ou même une
+                animation plus recherchée comme tenir un objet. J'avais pensé à faire tenir des algues dans un tentacule
+                pour faire manger un poisson.</p>
+            <h4>État actuel</h4>
+            <p>
+                Même si j'aurais apprécié d'avoir plus de temps pour la réalisation de ce projet intéressant, d'avoir le
+                cours de l'intervenant d'un expert du milieu et orienté jeux-vidéos. Je suis plutôt satisfaite du
+                résultat final, notamment des tentacules qui ont une animation plutôt fluide et organique pour une
+                première fois, de l'aspect général de la créature, qui correspond un minimum à ce que j'avais imaginé au
+                départ. Je suis satisfaite d'avoir pu apprendre toutes ces notions et du résultat final pour une
+                première expérience en modélisation et animation, et sur le logiciel.
+            </p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    -- REX D'UN OCTOLOTL --
+</footer>
+<script>
+    const viewer = document.querySelector("#octo");
+
+    viewer.addEventListener("load", () => {
+        setTimeout(() => {
+            const symbols = Object.getOwnPropertySymbols(viewer);
+            const sceneSymbol = symbols.find(s => s.description === 'scene');
+
+            if (sceneSymbol) {
+                const internalScene = viewer[sceneSymbol];
+                const mixer = internalScene.mixer;
+                const clips = internalScene.animations;
+
+                console.log("Animations détectées :", clips);
+
+                if (clips && clips.length > 0) {
+                    viewer.pause();
+                    clips.forEach((clip) => {
+                        const action = mixer.clipAction(clip);
+                        action.play();
+                    });
+
+                    viewer.play();
+                } else {
+                    console.log("Aucune animation trouvée dans le fichier GLB.");
+                }
+            } else {
+                console.error("Impossible d'accéder au moteur interne. Ton navigateur bloque peut-être l'accès.");
+            }
+        }, 100);
+    });
+</script>
+
+</body>
+</html>
