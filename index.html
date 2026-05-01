@@ -147,6 +147,13 @@
                 environnement, simulant la lumière sous l'eau.
                 J'ai également ajouté une lumière pour éclairer ma créature.
             </p>
+            <div class="video-container">
+                <video autoplay loop muted playsinline preload="metadata" poster="images/image_scene_default.png">
+                    <source src="octolotl.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+                <div class="image">Ref: Rendu final de la scénographie</div>
+            </div>
         </div>
 
         <div class="log-entry">
@@ -209,7 +216,7 @@
 </div>
 
 <footer>
-    -- REX D'UN OCTOLOTL by Marina Carbone - FILA2 mai 2026 --
+    -- REX D'UN OCTOLOTL --
 </footer>
 <script>
     const viewer = document.querySelector("#octo");
@@ -238,7 +245,7 @@
                     console.log("Aucune animation trouvée dans le fichier GLB.");
                 }
             } else {
-                console.error("Impossible d'accéder au moteur interne. Le navigateur bloque peut-être l'accès.");
+                console.error("Impossible d'accéder au moteur interne. Ton navigateur bloque peut-être l'accès.");
             }
         }, 100);
     });
