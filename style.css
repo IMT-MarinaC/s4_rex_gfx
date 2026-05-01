@@ -142,6 +142,19 @@ model-viewer {
     display: block;
 }
 
+.video-container {
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+}
+
 @media (min-width: 1024px) {
     header {
         margin: 0 2rem;
